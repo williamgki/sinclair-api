@@ -36,7 +36,7 @@ pc = Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
 anthropic_client = Client(api_key=os.getenv('ANTHROPIC_API_KEY'))
 
 # Connect to existing Pinecone index
-index = pc.Index("orwell-chunks")
+index = pc.Index("sinclair-chunks")
 
 # Rate limiting setup
 RATE_LIMIT_MINUTES = 30
@@ -114,21 +114,21 @@ def get_style_specific_prompt(style: str, context: str, question: str) -> str:
     """Return a style-specific prompt."""
     if style == "storytelling":
         return (
-            f"You are a creative writer analyzing Orwell's work.\n\n"
-            f"Context from Orwell's writing:\n{context}\n\n"
+            f"You are a creative writer analyzing sinclair's work.\n\n"
+            f"Context from sinclair's writing:\n{context}\n\n"
             f"{STORYTELLING_EXAMPLES}\n\n"
             f"Q: {question}\nA:"
         )
     else:  # scholarly style
         return (
-            f"You are a literary scholar analyzing Orwell's work.\n\n"
-            f"Context from Orwell's writing:\n{context}\n\n"
+            f"You are a literary scholar analyzing sinclair's work.\n\n"
+            f"Context from sinclair's writing:\n{context}\n\n"
             f"Question: {question}\n\n"
             f"Provide a scholarly analysis drawing from the provided context. "
             f"Focus on literary analysis, historical context, and thematic significance. "
             f"Be precise and academic in tone, but accessible. "
             f"If the provided context isn't directly relevant, acknowledge this "
-            f"but provide analysis based on your broader knowledge of Orwell's work. "
+            f"but provide analysis based on your broader knowledge of sinclair's work. "
             f"Limit to 4-5 sentences."
         )
 
